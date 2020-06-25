@@ -1,11 +1,16 @@
 from django.shortcuts import render
+from .models import Album,Song
 
 # Create your views here.
 from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the Blogs index.")
+    latest_album_list = Album.objects.all()
+    hello = "Hello World! Pass Data to View for Display"
+    context = {'latest_album_list': latest_album_list,'data': hello}
+    return render(request, 'music/index.html', context)
+
 
 
 
@@ -13,5 +18,8 @@ def index(request):
 #     return HttpResponse("Album Details")
 
 def detail(request, album_id):
-    response = "You're looking at the details results of Album  %s."
-    return HttpResponse(response % album_id)
+    try:
+        album = Album.objects.get(pk=album_id)
+    except Album.DoesNotExist:
+            raise Http404("Album does not exist")
+    return render(request, 'music/detail.html', {'album': album})
