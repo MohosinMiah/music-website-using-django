@@ -17,6 +17,10 @@ from django.urls import path
 
 from . import views
 
+#  app_name used for Namespace 
+
+app_name = 'music'
+
 urlpatterns = [
 
     path('<int:album_id>/', views.detail, name='detail'),

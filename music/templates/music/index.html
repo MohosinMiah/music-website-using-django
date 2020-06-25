@@ -1,7 +1,8 @@
 {% if latest_album_list %}
     <ul>
     {% for album in latest_album_list %}
-        <li><a href="/music/{{ album.id }}/">{{ album.artist }}</a></li>
+    <!-- Implementation Of Namespace -->
+        <li><a href="{% url 'music:detail' album.id %}">{{ album.artist }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
