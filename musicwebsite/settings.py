@@ -56,7 +56,12 @@ ROOT_URLCONF = 'musicwebsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # Here We need to write the templates directory in app 
+            #  os.path.join(BASE_DIR, 'music', 'templates'),
+             os.path.join(BASE_DIR, 'musicwebsite', 'templates'),
+    
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
