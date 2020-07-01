@@ -23,11 +23,11 @@ app_name = 'music'
 
 urlpatterns = [
 
-    path('<int:album_id>/', views.detail, name='detail'),
+    path('', views.IndexView.as_view(), name='index'),
 
-    path('<int:album_id>/favorite', views.favorite, name='favorite'),
+    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
-    path('', views.index, name='index'),
+
 
 ]
 
