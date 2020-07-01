@@ -4,34 +4,48 @@
  {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <h3 class="text-info">Music Album Detail</h3>
-                <br>
- 
-                <img src="{{ album_details.album_logo }}">
-                <h1>{{ album_details.album_title }}</h1>
-                <ul>
-                  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                  <form action=" " method="post">
-                  {% csrf_token %}
-                  {% for song in album_details.song_set.all %}
-                      <li>Song Title : {{ song.song_title }} --- Song File Type : {{ song.file_type }}</li>
-                  
-                      <br>
-                      <input type="radio" name="song" value="{{ song.id }}" {% if song.is_favorite %} checked = 'true' {% endif %}>
-                      <label >{{ song.song_title }}  --  --{% if song.favorite %} Favorite {% endif %} {% if song.is_favorite == True %}
-                        {{ "********************" }}
-                        {% endif %}
-    </label><br>
-                      
-                      {% endfor %}
-                  </ul>
-                  <input type="submit" value="Vote">
-                  </form>
-
-              <br>
-              </div>
            
+           <div class="col-md-4">
+            <h3 class="text-info">{{ album_details.album_title }} -  Album Details</h3>
+            <br>
+
+            <img src="{{ album_details.album_logo }}" width="300px" height="200px" >
+           </div>
+          <div class="col-md-8">
+            <div class="container" style="background-color: white;">
+              <h2>Song List</h2>
+             <a href=""> <button> Add New Song</button></a>
+             <a href=""> <button> View All</button></a>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Song Name</th>
+                    <th>Artist Name</th>
+                    <th>File Type</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                  </tr>
+                  <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                  </tr>
+                  <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
         </div>
     </div>

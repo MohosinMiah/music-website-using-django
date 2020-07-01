@@ -8,6 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href='{% static "music/css/style.css" %}'>
   </head>
@@ -26,10 +29,10 @@
             <a class="nav-link text-white" href="/">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'music:index' %}">ALBUMS </a>
+            <a class="nav-link text-white" href="{% url 'music:index' %}"> <span class="glyphicon glyphicon-music"></span>  ALBUMS </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">SONGS</a>
+            <a class="nav-link text-white" href="#"><span class="	glyphicon glyphicon-plus"></span> Add Album</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="#">LOGIN</a>

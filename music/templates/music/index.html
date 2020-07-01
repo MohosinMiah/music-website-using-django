@@ -22,6 +22,12 @@
                         <img src="{{ album.album_logo }}" alt="Album Logo" width="300px" height="200px"></a> 
                         </li>
 
+                        <div class="footer">
+                            <button><a href="{% url 'music:detail' album.id %}">Details</a></button>
+                            <button><a href="http://"><span class="glyphicon glyphicon-trash"></span></a></button>
+                            <button><a href="http://"><span class="glyphicon glyphicon-asterisk	"></span></a></button>
+
+                        </div>
                    
                 </ul>
                 
