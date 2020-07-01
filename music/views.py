@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from .models import Album,Song
-
+from django.shortcuts import render,get_object_or_404
+from .models import Album, Song
+from django.urls import reverse
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 def index(request):
@@ -19,7 +19,28 @@ def index(request):
 
 def detail(request, album_id):
     try:
-        album = Album.objects.get(pk=album_id)
+        album_details = get_object_or_404(Album, pk=album_id)
     except Album.DoesNotExist:
-            raise Http404("Album does not exist")
-    return render(request, 'music/detail.html', {'album': album},)
+        raise Http404("Album does not exist")
+    return render(request, 'music/detail.html', {'album_details': album_details},)
+
+
+
+
+def favorite(request,album_id):
+    album_details = get_object_or_404(Album, pk=album_id)
+    try:
+        selected_song = album_details.song_set.get(pk=request.POST['song'])
+    except (KeyError, Song.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'music/detail.html', {
+            'album_details': album_details,
+            'error_message': "You didn't select a song.",
+        })
+    else:
+        selected_song.is_favorite = True
+        selected_song.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('music:detail', args=(album_details.id,)))    
