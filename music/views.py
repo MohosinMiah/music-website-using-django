@@ -3,7 +3,7 @@ from .models import Album, Song
 # from django.urls import reverse
 # # Create your views here.
 # from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,CreateView,DetailView
 
 class IndexView(ListView):
 
@@ -24,6 +24,9 @@ class DetailView(DetailView):
     template_name= "music/detail.html"
 
 
+class AlbumCreate(CreateView):
+    model = Album
+    fields = ['artist','album_title','genre','album_logo']
 
 
 

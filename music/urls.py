@@ -27,6 +27,9 @@ urlpatterns = [
 
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 
+    path('album/add/', views.AlbumCreate.as_view(), name='album_create'),
+
+    
 
 
 ]
