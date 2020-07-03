@@ -1,0 +1,21 @@
+{% extends 'music/base.html' %} 
+{% block title %} Create Album - Music Website  {% endblock %}
+
+{% block body %}
+   <div class="container">
+       <div class="row">
+          
+         <div class="col-md-12">
+           <div class="container" style="background-color: white;">
+            <!-- New Album Form  -->
+            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include "music/form-template.html" %}
+                <button type="submit" class="btn btn-primary">Update</button>
+              </form>
+           </div>
+         </div>
+
+       </div>
+   </div>
+{% endblock %}

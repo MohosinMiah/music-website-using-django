@@ -1,9 +1,10 @@
 # from django.shortcuts import render,get_object_or_404
 from .models import Album, Song
-# from django.urls import reverse
-# # Create your views here.
+from django.urls import reverse_lazy
+# from django.core.urlresolvers import reverse_lazy
+# Create your views here
 # from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import ListView,DetailView,CreateView,DetailView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
 class IndexView(ListView):
 
@@ -15,7 +16,7 @@ class IndexView(ListView):
 
 
 
-class DetailView(DetailView):
+class AlbumDetail(DetailView):
 
     model = Album
 
@@ -29,11 +30,25 @@ class AlbumCreate(CreateView):
     fields = ['artist','album_title','genre','album_logo']
 
 
+class AlbumCrete(CreateView):
+    model = Album
+    fields = ['artist','album_title','genre','album_logo']
 
 
 
 
+class AlbumUpdate(UpdateView):
+    model = Album
+    fields = ['artist','album_title','genre','album_logo']
+    template_name_suffix = '_update_form'
 
+
+
+
+class AlbumDelete(DeleteView):
+    model = Album
+    # success_url = "/music/"
+    success_url = reverse_lazy("music:index")
 
 
 

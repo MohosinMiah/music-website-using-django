@@ -24,8 +24,10 @@
 
                         <div class="footer">
                             <button><a href="{% url 'music:detail' album.id %}">Details</a></button>
-                            <button><a href="http://"><span class="glyphicon glyphicon-trash"></span></a></button>
-                            <button><a href="http://"><span class="glyphicon glyphicon-asterisk	"></span></a></button>
+                            <button><a href="{% url 'music:album_delete' album.id %}"><span class="glyphicon glyphicon-trash"></span></a></button>
+                            <button><a href="http://"><span class="glyphicon glyphicon-asterisk"></span></a></button>                       
+                             <button><a href="{% url 'music:album_update' album.id %}"><span class="glyphicon glyphicon-edit"></span></a></button>
+
 
                         </div>
                    
